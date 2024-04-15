@@ -1,6 +1,4 @@
-
 package DivingCenterSystem;
-
 
 public class Customer {
     private int national_ID;
@@ -21,14 +19,24 @@ public class Customer {
         this.bookingsList = new Booking[10]; // Assuming maximum 10 bookings
     }
 
-
-    public Booking bookService(int serviceNum, Booking[] bookingsList) {
-        
-        return null; 
+    public Booking bookService(int serviceNum, String bookingDate) {
+        for (int i = 0; i < bookingsList.length; i++) {
+            if (bookingsList[i] == null) {
+                Booking booking = new Booking(i + 1, national_ID, serviceNum, bookingDate);
+                bookingsList[i] = booking;
+                return booking;
+            }
+        }
+        return null; // If no available slots for booking
     }
 
-    public String cancelBooking(Booking booking, Booking[] bookingsList) {
-        
-        return null; 
+    public String cancelBooking(int bookingID) {
+        for (int i = 0; i < bookingsList.length; i++) {
+            if (bookingsList[i] != null && bookingsList[i].getBookingID() == bookingID) {
+                bookingsList[i] = null;
+                return "Booking canceled successfully.";
+            }
+        }
+        return "Booking not found."; // If booking ID not found
     }
 }
