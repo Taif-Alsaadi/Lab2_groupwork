@@ -1,21 +1,38 @@
-
 package DivingCenterSystem;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class DivingTrip extends Service {
-      private String date;
+    private static List<DivingTrip> divingTrips = new ArrayList<>();
+    private String date;
 
     public DivingTrip(int serviceNum, String name, String type, String description, String date) {
         super(serviceNum, name, type, description);
         this.date = date;
+        divingTrips.add(this); // Add this diving trip to the list upon creation
     }
 
-    public void divingTrip(int sNum, String name, String type, String description, String startTime, String endTime, String date) {
-      
+    public static List<DivingTrip> getDivingTrips() {
+        return divingTrips;
     }
 
-    public void setDate(int serviceNum, String date) {
-        
+    public static void removeDivingTrip(int serviceNum) {
+        for (DivingTrip trip : divingTrips) {
+            if (trip.getServiceNum() == serviceNum) {
+                divingTrips.remove(trip);
+                break;
+            }
+        }
+    }
+
+    public static DivingTrip findDivingTrip(int serviceNum) {
+        for (DivingTrip trip : divingTrips) {
+            if (trip.getServiceNum() == serviceNum) {
+                return trip;
+            }
+        }
+        return null;
     }
 
     public String getDivingTripInfo() {
