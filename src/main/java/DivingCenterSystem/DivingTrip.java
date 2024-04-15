@@ -45,4 +45,23 @@ public class DivingTrip extends Service {
         info.append("Date: ").append(date).append("\n");
         return info.toString();
     }
+
+        public static DivingTrip findDivingTrip(int serviceNum) {
+        for (DivingTrip trip : divingTrips) {
+            if (trip.getServiceNum() == serviceNum) {
+                return trip;
+            }
+        }
+        return null;
+    }
+
+    public static List<String> getDivingTripInfoByDate(String targetDate) {
+        List<String> tripInfoList = new ArrayList<>();
+        for (DivingTrip trip : divingTrips) {
+            if (trip.getDate().equals(targetDate)) {
+                tripInfoList.add(trip.getDivingTripInfo());
+            }
+        }
+        return tripInfoList;
+    }
 }
