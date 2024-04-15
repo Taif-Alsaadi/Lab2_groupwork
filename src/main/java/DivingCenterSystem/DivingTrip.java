@@ -5,22 +5,39 @@ import java.util.List;
 
 public class DivingTrip extends Service {
     private static List<DivingTrip> divingTrips = new ArrayList<>();
+    private static final int MAX_CAPACITY = 6; // Maximum capacity for diving trips
+    private int currentCapacity;
     private String date;
 
     public DivingTrip(int serviceNum, String name, String type, String description, String date) {
         super(serviceNum, name, type, description);
         this.date = date;
         divingTrips.add(this); // Add this diving trip to the list upon creation
+        this.currentCapacity = 0; // Initially no bookings
     }
 
     public static List<DivingTrip> getDivingTrips() {
         return divingTrips;
+    }
+    
+    // Method to check if the trip can be booked
+    public boolean canBook() {
+        return currentCapacity < MAX_CAPACITY;
+    }
+        
+    public void addBooking() {
+        if (canBook()) {
+            currentCapacity++;
+        } else {
+            System.out.println("Sorry, the diving trip is already fully booked.");
+        }
     }
 
     public static void removeDivingTrip(int serviceNum) {
         for (DivingTrip trip : divingTrips) {
             if (trip.getServiceNum() == serviceNum) {
                 divingTrips.remove(trip);
+                currentCapacity--;
                 break;
             }
         }
