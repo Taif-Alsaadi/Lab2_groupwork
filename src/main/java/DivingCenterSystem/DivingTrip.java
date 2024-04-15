@@ -17,4 +17,15 @@ public class DivingTrip extends Service {
     public void setDate(int serviceNum, String date) {
         
     }
+
+    public String getDivingTripInfo() {
+        StringBuilder info = new StringBuilder();
+        info.append("Diving Trip Information:\n");
+        info.append("Service Number: ").append(getServiceNum()).append("\n");
+        info.append("Name: ").append(getName()).append("\n");
+        info.append("Type: ").append(getType()).append("\n");
+        info.append("Description: ").append(getDescription()).append("\n");
+        info.append("Date: ").append(date).append("\n");
+        return info.toString();
+    }
 }
