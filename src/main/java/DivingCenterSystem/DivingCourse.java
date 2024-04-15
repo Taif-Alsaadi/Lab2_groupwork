@@ -1,9 +1,11 @@
-
 package DivingCenterSystem;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class DivingCourse extends Service{
-  private String startDate;
+public class DivingCourse extends Service {
+    private static List<DivingCourse> divingCourses = new ArrayList<>();
+    private String startDate;
     private String endDate;
     private String level;
 
@@ -12,17 +14,64 @@ public class DivingCourse extends Service{
         this.startDate = startDate;
         this.endDate = endDate;
         this.level = level;
+        divingCourses.add(this); // Add this diving course to the list upon creation
     }
 
-    public void divingCourse(int sNum, String name, String type, String description, String startTime, String endTime, String sDate, String eDate, String level) {
-       
+    public static List<DivingCourse> getDivingCourses() {
+        return divingCourses;
     }
 
-    public void setSdate(int serviceNum, String sDate) {
-        
+    public static void removeDivingCourse(int serviceNum) {
+        for (DivingCourse course : divingCourses) {
+            if (course.getServiceNum() == serviceNum) {
+                divingCourses.remove(course);
+                break;
+            }
+        }
+    }
+  
+    public String getDivingCourseInfo() {
+        StringBuilder info = new StringBuilder();
+        info.append("Diving Course Information:\n");
+        info.append("Service Number: ").append(getServiceNum()).append("\n");
+        info.append("Name: ").append(getName()).append("\n");
+        info.append("Type: ").append(getType()).append("\n");
+        info.append("Description: ").append(getDescription()).append("\n");
+        info.append("Start Date: ").append(startDate).append("\n");
+        info.append("End Date: ").append(endDate).append("\n");
+        info.append("Level: ").append(level).append("\n");
+        return info.toString();
+    }
+  
+    public static DivingCourse findDivingCourse(int serviceNum) {
+        for (DivingCourse course : divingCourses) {
+            if (course.getServiceNum() == serviceNum) {
+                return course;
+            }
+        }
+        return null;
     }
 
-    public void setEdate(int serviceNum, String eDate) {
-       
+    public static List<String> getDivingCourseInfoByDate(String targetDate) {
+        List<String> courseInfoList = new ArrayList<>();
+        for (DivingCourse course : divingCourses) {
+            if (course.getStartDate().equals(targetDate) || course.getEndDate().equals(targetDate)) {
+                courseInfoList.add(course.getDivingCourseInfo());
+            }
+        }
+        return courseInfoList;
+    }
+
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public String getLevel() {
+        return level;
     }
 }
