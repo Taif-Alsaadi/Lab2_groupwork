@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DivingCourse extends Service {
+    private static final int MAX_CAPACITY = 4; // Maximum capacity for diving courses
+    private int currentCapacity; // Current number of bookings
     private static List<DivingCourse> divingCourses = new ArrayList<>();
     private String startDate;
     private String endDate;
@@ -15,8 +17,22 @@ public class DivingCourse extends Service {
         this.endDate = endDate;
         this.level = level;
         divingCourses.add(this); // Add this diving course to the list upon creation
+        this.currentCapacity = 0; // Initially no bookings
     }
 
+    // Method to check if the course can be booked
+    public boolean canBook() {
+        return currentCapacity < MAX_CAPACITY;
+    }
+
+    public void addBooking() {
+        if (canBook()) {
+            currentCapacity++;
+        } else {
+            System.out.println("Sorry, the diving course is already fully booked.");
+        }
+    }
+    
     public static List<DivingCourse> getDivingCourses() {
         return divingCourses;
     }
@@ -25,6 +41,7 @@ public class DivingCourse extends Service {
         for (DivingCourse course : divingCourses) {
             if (course.getServiceNum() == serviceNum) {
                 divingCourses.remove(course);
+                currentCapacity--;
                 break;
             }
         }
