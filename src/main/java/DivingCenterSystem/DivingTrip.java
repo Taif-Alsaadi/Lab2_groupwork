@@ -6,7 +6,7 @@ import java.util.List;
 public class DivingTrip extends Service {
     private static List<DivingTrip> divingTrips = new ArrayList<>();
     private static final int MAX_CAPACITY = 6; // Maximum capacity for diving trips
-    private int currentCapacity;
+    private static int currentCapacity;
     private String date;
 
     public DivingTrip(int serviceNum, String name, String type, String description, String date) {
@@ -15,6 +15,32 @@ public class DivingTrip extends Service {
         divingTrips.add(this); // Add this diving trip to the list upon creation
         this.currentCapacity = 0; // Initially no bookings
     }
+
+    public static int getMAX_CAPACITY() {
+        return MAX_CAPACITY;
+    }
+
+    public int getCurrentCapacity() {
+        return currentCapacity;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public static void setDivingTrips(List<DivingTrip> divingTrips) {
+        DivingTrip.divingTrips = divingTrips;
+    }
+
+    public void setCurrentCapacity(int currentCapacity) {
+        this.currentCapacity = currentCapacity;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+    
+    
 
     public static List<DivingTrip> getDivingTrips() {
         return divingTrips;
@@ -43,14 +69,14 @@ public class DivingTrip extends Service {
         }
     }
 
-    public static DivingTrip findDivingTrip(int serviceNum) {
-        for (DivingTrip trip : divingTrips) {
-            if (trip.getServiceNum() == serviceNum) {
-                return trip;
-            }
-        }
-        return null;
-    }
+//    public static DivingTrip findDivingTrip(int serviceNum) {
+//        for (DivingTrip trip : divingTrips) {
+//            if (trip.getServiceNum() == serviceNum) {
+//                return trip;
+//            }
+//        }
+//        return null;
+//    }
 
     public String getDivingTripInfo() {
         StringBuilder info = new StringBuilder();

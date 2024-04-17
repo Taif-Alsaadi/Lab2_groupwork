@@ -24,6 +24,14 @@ public class Service {
         allServices.add(this);
     }
 
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
      public int getServiceNum() {
         return serviceNum;
     }
