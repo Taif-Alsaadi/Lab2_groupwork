@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DivingTrip extends Service {
+    
     private static List<DivingTrip> divingTrips = new ArrayList<>();
     private static final int MAX_CAPACITY = 6; // Maximum capacity for diving trips
     private static int currentCapacity;
@@ -69,14 +70,6 @@ public class DivingTrip extends Service {
         }
     }
 
-//    public static DivingTrip findDivingTrip(int serviceNum) {
-//        for (DivingTrip trip : divingTrips) {
-//            if (trip.getServiceNum() == serviceNum) {
-//                return trip;
-//            }
-//        }
-//        return null;
-//    }
 
     public String getDivingTripInfo() {
         StringBuilder info = new StringBuilder();

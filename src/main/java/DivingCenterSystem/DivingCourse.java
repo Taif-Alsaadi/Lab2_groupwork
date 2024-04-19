@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DivingCourse extends Service {
+    
     private static final int MAX_CAPACITY = 4; // Maximum capacity for diving courses
     private static int currentCapacity; // Current number of bookings 
     private static List<DivingCourse> divingCourses = new ArrayList<>();

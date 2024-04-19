@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Service {
+    
     private int serviceNum;
     private String name;
     private String type;

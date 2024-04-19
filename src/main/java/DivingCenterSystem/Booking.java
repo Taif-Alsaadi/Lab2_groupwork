@@ -1,6 +1,7 @@
 package DivingCenterSystem;
 
 public class Booking {
+    
     private int bookingID;
     private int custNational_ID;
     private int serviceNum;
