@@ -3,6 +3,7 @@ package DivingCenterSystem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 public class Service {
     
@@ -12,17 +13,16 @@ public class Service {
     private String description;
     private String startTime;
     private String endTime;
-
-       // Static list to store all services
-    private static List<Service> allServices = new ArrayList<>();
+    private static List<Service> allServices = new ArrayList<>(); // Static list to store all services
+    private int[] bookingIDs=new int[30];
 
     public Service(int serviceNum, String name, String type, String description) {
         this.serviceNum = serviceNum;
         this.name = name;
         this.type = type;
         this.description = description;
-                // Add the newly created service to the list of all services
-        allServices.add(this);
+        allServices.add(this);  // Add the newly created service to the list of all services         
+        Arrays.fill(bookingIDs, -1); // Initialize the booking IDs array with -1 to indicate empty slots
     }
 
     public void setStartTime(String startTime) {
@@ -103,6 +103,38 @@ public void addEndTime(int sNum, String eTime) {
         }
     }
 }
+
+
+//--------------------------------------------------
+
+// Method to add booking ID to this service
+    public void addBookingID(int bookingID) {
+        // Find the first empty slot in the booking IDs array
+        for (int i = 0; i < bookingIDs.length; i++) {
+            if (bookingIDs[i] == -1) {
+                bookingIDs[i] = bookingID;
+                break;
+            }
+        }
+    }
+
+    // Method to get all booking IDs for this service
+     public int[] getBookingIDs() {
+        return bookingIDs;
+    }
+    // Method to remove booking ID from this service
+    public void removeBookingID(int bookingID) {
+     
+        // Find and remove the specified booking ID from the array
+        for (int i = 0; i < bookingIDs.length; i++) {
+            if (bookingIDs[i] == bookingID) {
+                bookingIDs[i] = -1; // Mark the slot as empty
+                break;
+            }
+        }
+    }
+    
+   
 
     
 }
