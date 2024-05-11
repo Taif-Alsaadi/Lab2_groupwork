@@ -134,6 +134,18 @@ public void addEndTime(int sNum, String eTime) {
         }
     }
     
+     // Method to search for services based on a keyword
+    public static List<Service> searchServices(String keyword) {
+        List<Service> matchingServices = new ArrayList<>();
+
+        for (Service service : allServices) {
+            if (service.getName().contains(keyword) || service.getDescription().contains(keyword)) {
+                matchingServices.add(service);
+            }
+        }
+
+        return matchingServices;
+    }
    
 
     
