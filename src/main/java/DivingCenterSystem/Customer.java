@@ -26,8 +26,8 @@ public class Customer {
         this.bookingsList = new ArrayList<>(); 
     }
     
-       public static void registerCustomer() {
-        Scanner scanner = new Scanner(System.in);
+       public static void registerCustomer(Scanner scanner) {
+       // Scanner scanner = new Scanner(System.in);
         System.out.println("Enter First Name:");
         String fname = scanner.nextLine();
         System.out.println("Enter Last Name:");
@@ -48,9 +48,17 @@ public class Customer {
         registeredCustomers.add(newCustomer);
         System.out.println("Customer registered successfully: " + fname + " " + lname);
 
-        scanner.close();
+    
     }
 
+       public static Customer findCustomer(int nationalID) {
+    for (Customer customer : registeredCustomers) {
+        if (customer.national_ID == nationalID) {
+            return customer;
+        }
+    }
+    return null;
+}
 
     public Booking bookService(int serviceNum, String bookingDate) {
         if (bookingsList.size() < 10) { // Check if there's still capacity for booking
