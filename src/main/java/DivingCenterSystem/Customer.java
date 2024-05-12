@@ -1,7 +1,9 @@
+
 package DivingCenterSystem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Customer {
     
@@ -12,7 +14,8 @@ public class Customer {
     private String birthdate;
     private String sex;
     private List<Booking> bookingsList;
-
+    private static List<Customer> registeredCustomers = new ArrayList<>();
+    
     public Customer(int national_ID, String fname, String lname, String phone, String birthdate, String sex) {
         this.national_ID = national_ID;
         this.fname = fname;
@@ -22,6 +25,32 @@ public class Customer {
         this.sex = sex;
         this.bookingsList = new ArrayList<>(); 
     }
+    
+       public static void registerCustomer() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter First Name:");
+        String fname = scanner.nextLine();
+        System.out.println("Enter Last Name:");
+        String lname = scanner.nextLine();
+        System.out.println("Enter Sex (Male/Female):");
+        String sex = scanner.nextLine();
+         System.out.println("Enter Birthdate (YYYY-MM-DD):");
+        String birthdate = scanner.nextLine();
+        System.out.println("Enter National ID:");
+        int national_ID = scanner.nextInt();
+        scanner.nextLine(); 
+        System.out.println("Enter Phone Number:");
+        String phone = scanner.nextLine();
+       
+       
+
+        Customer newCustomer = new Customer(national_ID, fname, lname, phone, birthdate, sex);
+        registeredCustomers.add(newCustomer);
+        System.out.println("Customer registered successfully: " + fname + " " + lname);
+
+        scanner.close();
+    }
+
 
     public Booking bookService(int serviceNum, String bookingDate) {
         if (bookingsList.size() < 10) { // Check if there's still capacity for booking
