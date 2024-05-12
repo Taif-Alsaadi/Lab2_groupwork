@@ -1,4 +1,3 @@
-
 package DivingCenterSystem;
 
 import java.util.ArrayList;
@@ -24,6 +23,16 @@ public class Service {
         allServices.add(this);  // Add the newly created service to the list of all services         
         Arrays.fill(bookingIDs, -1); // Initialize the booking IDs array with -1 to indicate empty slots
     }
+    
+    public static Service findService(int serviceNum) {
+    for (Service service : allServices) {
+        if (service.getServiceNum() == serviceNum) {
+            return service;
+        }
+    }
+    return null;
+}
+
 
     public void setStartTime(String startTime) {
         this.startTime = startTime;
@@ -136,17 +145,24 @@ public void addEndTime(int sNum, String eTime) {
     
      // Method to search for services based on a keyword
     public static List<Service> searchServices(String keyword) {
-        List<Service> matchingServices = new ArrayList<>();
-
-        for (Service service : allServices) {
-            if (service.getName().contains(keyword) || service.getDescription().contains(keyword)) {
-                matchingServices.add(service);
-            }
-        }
-
-        return matchingServices;
+    List<Service> matchingServices = new ArrayList<>();
+    int serviceNum = -1;
+    try {
+        serviceNum = Integer.parseInt(keyword);  // Try to parse keyword as service number
+    } catch (NumberFormatException e) {
+        // If not a number, handle silently and continue searching by name and description
     }
-   
+
+    for (Service service : allServices) {
+        if (service.getName().contains(keyword) ||
+            service.getDescription().contains(keyword) ||
+            service.getServiceNum() == serviceNum) {
+            matchingServices.add(service);
+        }
+    }
+    return matchingServices;
+}
+
 
     
 }
