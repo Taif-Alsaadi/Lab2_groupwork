@@ -86,7 +86,7 @@ public class MainClass {
             return;
         }
 
-        System.out.print("Enter booking date (YYYY-MM-DD): ");
+        System.out.print("Enter booking date (DD-MM-YYYY): ");
         scanner.nextLine(); // Clear buffer
         String date = scanner.nextLine();
         Booking booking = customer.bookService(serviceNum, date);
