@@ -21,10 +21,4 @@ public class Booking {
         return serviceNum;
     }
 
-    public void cancelBooking() {
-        // Perform cancellation logic here
-        // This method can be implemented based on your specific requirements.
-        // For example, you can update a database record, send a cancellation notification, etc.
-        System.out.println("Booking with ID: " + bookingID + " has been canceled.");
-    }
 }
