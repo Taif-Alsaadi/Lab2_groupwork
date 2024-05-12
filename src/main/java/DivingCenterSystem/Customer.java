@@ -34,7 +34,7 @@ public class Customer {
         String lname = scanner.nextLine();
         System.out.println("Enter Sex (Male/Female):");
         String sex = scanner.nextLine();
-         System.out.println("Enter Birthdate (YYYY-MM-DD):");
+         System.out.println("Enter Birthdate (DD-MM-YYYY):");
         String birthdate = scanner.nextLine();
         System.out.println("Enter National ID:");
         int national_ID = scanner.nextInt();
