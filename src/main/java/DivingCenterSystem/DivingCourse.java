@@ -92,4 +92,4 @@ public class DivingCourse extends Service {
     public String getLevel() {
         return level;
     }
-}
+} 
