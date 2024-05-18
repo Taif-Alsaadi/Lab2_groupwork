@@ -1,3 +1,4 @@
+
 package DivingCenterSystem;
 
 import java.util.ArrayList;
@@ -162,6 +163,18 @@ public void addEndTime(int sNum, String eTime) {
     }
     return matchingServices;
 }
+    
+    public static List<Service> findServiceByType(String type) {
+    List<Service> servicesByType = new ArrayList<>();
+    for (Service service : allServices) {
+        if ((type.equalsIgnoreCase("t") && service.getType().equals("Trip")) ||
+            (type.equalsIgnoreCase("c") && service.getType().equals("Course"))) {
+            servicesByType.add(service);
+        }
+    }
+    return servicesByType;
+}
+
 
 
     
