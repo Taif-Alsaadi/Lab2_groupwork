@@ -1,4 +1,3 @@
-
 package DivingCenterSystem;
 
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ public class Customer {
         String lname = scanner.nextLine();
         System.out.println("Enter Sex (Male/Female):");
         String sex = scanner.nextLine();
-         System.out.println("Enter Birthdate (DD-MM-YYYY):");
+         System.out.println("Enter Birthdate (YYYY-MM-DD):");
         String birthdate = scanner.nextLine();
         System.out.println("Enter National ID:");
         int national_ID = scanner.nextInt();
@@ -79,4 +78,4 @@ public class Customer {
         }
         return "Booking not found."; // If booking ID not found
     }
-}
+}  
